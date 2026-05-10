@@ -18,7 +18,7 @@ def detect_frequency(chunk):
 def main():
     samples_per_bit = int(sample_rate * bit_duration)
     bits = []
-    while(true):
+    while True:
         chunk = sd.rec(samples_per_bit, samplerate=sample_rate, channels=1)
         sd.wait()
         tmp = detect_frequency(chunk.flatten())
