@@ -21,7 +21,7 @@ def main():
 
         audio_signal = np.sin(2 * np.pi * freq * t)
 
-        sd.play(audio_signal, sample_rate, device=1)
+        sd.play(audio_signal, sample_rate)
         sd.wait()
 
 if __name__ == "__main__":
