@@ -1,4 +1,5 @@
 import sounddevice as sd
+
 import numpy as np
 from scipy.fft import fft
 
@@ -19,9 +20,12 @@ def main():
     samples_per_bit = int(sample_rate * bit_duration)
     bits = []
     while True:
-        chunk = sd.rec(samples_per_bit, samplerate=sample_rate, channels=1)
+
+        chunk = sd.rec(samples_per_bit, samplerate=sample_rate, channels=2, device=19, dtype='float32')
         sd.wait()
         tmp = detect_frequency(chunk.flatten())
+        print(f"Detected frequency: {tmp}")
+
         if tmp < 1500:
             bit = 0
         else:
